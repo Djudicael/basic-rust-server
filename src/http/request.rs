@@ -15,6 +15,20 @@ pub struct Request<'buffer> {
     method: Method,
 }
 
+impl<'buffer> Request<'buffer> {
+    pub fn path(&self) -> &str {
+        &self.path
+    }
+
+    pub fn method(&self) -> &Method {
+        &self.method
+    }
+
+    pub fn query_string(&self) -> Option<&QueryString> {
+        self.query_string.as_ref()
+    }
+}
+
 pub enum ParseError {
     InvalidRequest,
     InvalidEncoding,
